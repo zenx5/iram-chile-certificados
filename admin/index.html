@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Iram - Consultar Certificado ( Administracion )</title>
+	<meta http-equiv="Content-Type" content="text/html;" charset="utf-8">
+	<meta name="Pragma" content="no-cache">
+    <link rel="shortcut icon" type="image/ico" href="../img/ico_iram.ico"/>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" type="text/css" href="../css/estilos.css">
+	<link rel="stylesheet" type="text/css" href="../css/ficha-iram.css">
+
+
+	<script type="text/javascript" src="https://code.angularjs.org/1.7.8/angular.min.js"></script>
+	<script type="text/javascript" src="https://code.angularjs.org/1.7.8/angular-route.min.js"></script>
+	<script type="text/javascript" src="https://code.angularjs.org/1.7.8/angular-resource.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.js" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="../js/appConsultaLoad/xml2json.js"></script>
+	<script type="text/javascript" src="../js/appConsultaLoad/module.js"></script>
+	<script type="text/javascript" src="../js/appConsultaLoad/directive.js"></script>
+	<script type="text/javascript" src="../js/appConsultaLoad/controller-login.js"></script>
+	<script type="text/javascript" src="../js/appConsultaLoad/controller-admin.js"></script>
+
+	<script type="text/javascript" src="../../recursos_comunes/js/jquery-slim.min.js"></script>
+	<script type="text/javascript" src="../../recursos_comunes/js/popper.min.js"></script>
+	<script type="text/javascript" src="../../recursos_comunes/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+    		$('[data-toggle="popover"]').popover(); 
+		});
+	</script>
+</head>
+<body ng-app="appConsultaLoad">
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+		  <tbody>
+		    <tr>
+		      <td bgcolor="#0e4783">&nbsp;</td>
+		    </tr>
+		  </tbody>
+		</table>
+				<nav class="navbar navbar-expand-sm navbar-light">
+		 	 <!-- logo -->
+		    <a class="navbar-brand" href="http://www.iramchile.cl/">
+		      <img src="../img/logo_iram_chile1.jpg" alt="">
+		    </a>   
+		 </nav>
+		<br>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-8 text-center">
+				<h1>Panel de Control</h1>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-8">
+				<div ng-view></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Iram - Consultar Certificado</title>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" type="image/ico" href="img/ico_iram.ico"/>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://code.angularjs.org/1.7.8/angular.min.js"></script>
+	<script type="text/javascript" src="https://code.angularjs.org/1.7.8/angular-route.min.js"></script>
+	<script type="text/javascript" src="https://code.angularjs.org/1.7.8/angular-animate.min.js"></script>
+	<!-- ELIMINAR ESTO 
+	<link rel="stylesheet" type="text/css" href="/rrcc/css/bootstrap.min.css"/>
+	<script type="text/javascript" src="/rrcc/js/jquery-slim.min.js"></script>
+	<script type="text/javascript" src="/rrcc/js/popper.min.js"></script>
+	<script type="text/javascript" src="/rrcc/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/rrcc/js/angular-1.7.8/angular.min.js"></script>
+	<script type="text/javascript" src="/rrcc/js/angular-1.7.8/angular-route.min.js"></script>
+	<script type="text/javascript" src="/rrcc/js/angular-1.7.8/angular-animate.js"></script>
+	 HASTA AQUI -->
+	<script type="text/javascript" src="js/appConsultaLoad/ngStorage.min.js"></script>
+	<script type="text/javascript" src="js/appConsulta/module.js"></script>
+	<script type="text/javascript" src="js/appConsulta/directive.js"></script>
+	<script type="text/javascript" src="js/appConsulta/filter.js"></script>
+	<script type="text/javascript" src="js/appConsulta/controller.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/ficha-iram.css">
+
+</head>
+<body ng-app="appConsulta">
+	<div class="container-fluid">
+
+		<div class="row" style="width:120%; height:20px; background-color:#0e4783">
+		    <div class="col-12"> </div>   
+		</div>
+		<nav class="navbar navbar-expand-sm navbar-light">
+		 	 <!-- logo -->
+		    <a class="navbar-brand" href="http://www.iramchile.cl/">
+		      <img src="img/logo_iram_chile1.jpg" alt="">
+		    </a>   
+		 </nav>
+		<br>
+		
+		<br>
+		<div class="row justify-content-center">
+		    <div class="col-8 justify-content-center" ng-view></div>
+		</div>
+		
+	</div>
+</body>
+</html>

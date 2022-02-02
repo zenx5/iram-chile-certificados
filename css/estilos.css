@@ -1,0 +1,161 @@
+.fondo{
+	background-color: rgba(255,255,255,0.9);
+}
+
+.search-input{
+	display: inline-block;
+	width: 400px;
+	height: 45px;
+}
+.fade:not(.ng-show){
+    opacity:1;
+    width: 400px;   
+    transition: all 500ms;
+}
+.fade.ng-hide {
+    opacity: 0;
+    width: 0px;
+    transition: all 500ms;
+}
+.fade.ng-hide-animate.ng-animate.ng-hide-remove.ng-hide-remove-active,
+.fade.ng-hide-animate.ng-animate.ng-hide-add.ng-hide.ng-hide-add-active{
+    opacity:0.5;
+    width: 100px;   
+    transition: all 500ms;
+}
+.search-input *{
+	z-index: 10;
+	display: inline-block;
+	width: 340px;
+}
+.search-input .placeholder{
+	z-index: 0;  
+	position: relative; 
+	display: inline-block;
+	top: -33px;
+	left: 2px;
+	opacity: 0.5
+}
+.search-input input{
+	top: -10px;
+	border-color: rgba(0,0,0,0);
+	outline-color: rgba(0,0,0,0);
+}
+.search-input span{
+	position: relative;
+	width: 1px;
+	height: 22px;
+	top: 5px;
+	background-color: rgba(0,0,0,0.2);
+}
+.search-input img{
+	position: relative;
+	top: -2px;
+	left: 5px;
+	max-width: 20px;
+	cursor: pointer;
+}
+
+.foto img{
+	display: inline-block;
+	width: 130px;
+	height: 150px;
+	margin-left: 20px;
+	border: 1px solid black;
+}
+.datos{
+	display: inline-block;
+}
+
+.toggle{
+	position: relative;
+	top:15px;
+	right: 5px;
+	display: inline-block;
+	border-radius: 20px;
+	width:80px;
+	height: 36px;
+	background-color: blue;
+	transition: all 1s;
+	margin-left: 15px;
+	margin-right: 5px;
+}
+
+.toggle-active{
+	background-color: green;
+	transition: all 1s;
+}
+
+.toggle .circle{
+	z-index: 20:;
+	position: relative;
+	top: 2px;
+	left: 5px;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	border: 1px solid lightgray;
+	background-color: white;
+	border-radius: 25px;
+	transition: all 1s;
+}
+.toggle .toggle-circle-active{
+	left: 45px;
+	transition: all 1s;
+}
+.toggle input{
+	display: none;
+}
+
+.switchBtn {
+    position: relative;
+    display: inline-block;
+    width: 110px;
+    height: 34px;
+}
+.switchBtn input {
+    display:none;
+}
+.slide {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #8CE196;
+    -webkit-transition: .4s;
+    transition: .4s;
+    padding: 8px;
+    color: #fff;
+}
+.slide:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 78px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+input:checked + .slide {
+    background-color: #8CE196;
+    padding-left: 40px;
+}
+input:focus + .slide {
+    box-shadow: 0 0 1px #01aeed;
+}
+input:checked + .slide:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+    left: -20px;
+}
+.slide.round {
+    border-radius: 34px;
+}
+.slide.round:before {
+    border-radius: 50%;
+}

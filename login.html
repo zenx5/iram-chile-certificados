@@ -1,0 +1,29 @@
+<br><br><br>
+<div class="row justify-content-center">
+<div class="col-4">
+<form class="justify-content-center">
+	<div class="form-group">
+		<label class="bg-light">
+			Usuario: 
+		</label>
+		<input class="form-control" type="text" ng-model="usuario">
+		<small ng-show="loginTypeError==1" class="text-form text-danger">Usuario No Valido.</small>
+	</div>
+	<div class="form-group">
+		<label class="bg-light">
+			Contraseña 
+		</label>
+		<input class="form-control" type="password" ng-model="contrasena">
+		<small ng-show="loginTypeError==2" class="text-form text-danger">Contraseña Incorrecta</small>
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-2">
+			<input class="btn btn-primary" type="button" ng-disabled="usuario&&contrasena" value="Login" ng-click="login()">
+		</div>
+		<!--div class="col-2">
+			<input class="btn btn-secondary" type="button" value="Registrar" data-toggle="modal" data-target="#registro">
+		</div-->
+	</div>
+</form>
+</div>
+</div>

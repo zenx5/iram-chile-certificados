@@ -1,0 +1,56 @@
+<form class="justify-content-center">
+	<div class="form-group">
+		<label>
+			Usuario: 
+		</label>
+		<input class="form-control" type="text" ng-model="usuario">
+		<small ng-show="loginTypeError==1" class="text-form text-danger">Usuario No Valido.</small>
+	</div>
+	<div class="form-group">
+		<label>
+			Contraseña 
+		</label>
+		<input class="form-control" type="password" ng-model="contrasena">
+		<small ng-show="loginTypeError==2" class="text-form text-danger">Contraseña Incorrecta</small>
+	</div>
+	<div class="row justify-content-between">
+		<div class="col-2">
+			<input class="btn btn-primary" type="button" ng-disabled="usuario&amp;&amp;contrasena" value="Login" ng-click="login()">
+		</div>
+		<div class="col-2">
+			<input class="btn btn-secondary" type="button" value="Registrar" data-toggle="modal" data-target="#registro">
+		</div>
+	</div>
+</form>
+
+<div class="modal fade" id="registro">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<!-- CABECERA DEL DIALOGO -->
+			<div class="modal-header">
+				<h4 class="modal-title">Registro de Administradores</h4>
+				<button type="button" id="close" class="close" data-dismiss="modal">X</button>
+			</div>
+
+			<!-- CUERPO DE DIALOGO -->
+			<div class="modal-body">
+				<div class="form-group">
+					<label>Nombre de Usuario</label>
+					<input type="text" minlength="6" maxlength="20" required="" pattern="[A-Za-z]+" class="form-control" ng-model="registro.usuario" placeholder="Ingrese su nombre de usuario">
+					<small ng-show="!usuario_repetido" class="text-form text-muted">Solo se admiten mayusculas y minusculas con una longitud maxima de 20 caracteres</small>
+					<small ng-show="usuario_repetido" class="text-form text-danger">El usuario ya esta  registrado, por favor escoja otro.</small>
+				</div>
+				<div class="form-group">
+					<label>Contraseña</label>
+					<input type="password" minlength="6" maxlength="20" class="form-control" placeholder="Ingrese su clave" required="" ng-model="registro.contrasena">
+					<small class="text-form text-muted">Solo se admiten mayusculas, minusculas y numeros con una longitud maxima de 20 caracteres</small>
+				</div>	
+			</div>
+
+			<!-- PIE DEL DIALOGO -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success" ng-click="registro()">Registrar</button>
+			</div>
+		</div>
+	</div>
+</div>

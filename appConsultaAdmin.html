@@ -1,0 +1,264 @@
+	<form enctype="multipart/form-data" >
+		<div id="acordion1">
+			<div class="card">
+				<div class="card-header" id="cabecera1">
+					<h5 class="mb-0">
+						<button class="btn btn-link" data-toggle="collapse" data-target="#Opcion1" aria-expanded="true" aria-controls="Opcion1">
+							Cargar Datos Individuales
+						</button>
+					</h5>
+				</div>
+				<div id="Opcion1" class="collapse" aria-labelledby="cabecera1" data-parent="#acordion1">
+					<div class="card-body">
+						<div class="ficha-iram">
+								<h2>>>Operador Equipos de Izaje</h2>
+								<div class="ficha-linea-1">
+									<div class="ficha-col-1">
+										<img ng-hide="foto_URI[0]" src="../img/fotogen.png" onclick="$('#foto').click()">
+										<img ng-show="foto_URI[0]" ng-src="{{foto_URI[0]}}" id="img" onclick="$('#foto').click()">
+										<input type="file" ng-file="foto" id="foto" style="display: none" >
+									</div>
+									<div class="ficha-col-2">
+										<label>APELLIDOS</label>
+										<span><input type="text" ng-model="nuevoRegistro.persona.apellido"></span>
+										<label>NOMBRES</label>
+										<span><input type="text" ng-model="nuevoRegistro.persona.nombre"></span>
+										<label>RUT</label>
+										<span><input type="text" ng-change="format('nr_p_rut')" ng-model="nr_p_rut"></span>
+									</div>
+									<div class="ficha-col-3 ">
+										<img src="../img/logo.png">
+									</div>
+								</div>
+								<div class="ficha-linea-2">
+									<div class="ficha-col-1">
+									<label>EVALUACION</label>
+									<label><input type="date" ng-model="nuevoRegistro.certificado.fecha_evaluacion"></label>
+									<label>FECHA EXPIRACION</label>
+									<label><input type="date" ng-model="nuevoRegistro.certificado.fecha_expiracion"></label>
+								</div>
+								<div class="ficha-col-2">
+									<label>Registro N°</label>
+									<label><input type="text" id="registro" ng-model="nuevoRegistro.certificado.registro"></label>
+									<label>Observaciones</label>
+									<label><input type="text" ng-model="nuevoRegistro.certificado.observaciones"></label>
+								</div>
+								<div class="ficha-col-3">
+									<label>Certificado</label>
+									<select class="form-control" ng-model="equipo">
+										<option value="-1">Nuevo..</option>
+										<option value="{{elem.titulo}}" ng-repeat="elem in opcionesEquipo">{{elem.titulo}}</option>
+									</select>
+									<input class="form-control" type="text" ng-model="nuevoRegistro.certificado.equipo" ng-show="equipo==-1">
+								</div>
+							</div>
+							<div class="ficha-footer">
+								VÁLIDA SÓLO DENTRO DEL PLAZO DE VIGENCIA DE UN (1) AÑO Y EN DESEMPEÑO EXCLUSIVO PARA SCHLUMBERGER CHILE 
+							</div>
+						</div>
+						<br>
+							<div class="form-group">
+      							<span>Subir Certificado:</span>
+      							<input class="form-control-file" type="file" name="uploadedFile" id="pdf"/>
+					    	</div>
+  						<br>
+						<button class="btn btn-primary" ng-click="cargarDatos()">Cargar</button>
+					</div>
+				</div>
+			</div>	
+		
+			<div class="card">
+				<div class="card-header" id="cabecera2">
+					<h5 class="mb-0">
+						<button class="btn btn-link" data-toggle="collapse" data-target="#Opcion2" aria-expanded="true" aria-controls="Opcion2">
+							Cargar Datos desde Archivo JSON
+						</button>
+					</h5>
+				</div>
+				<div id="Opcion2" class="collapse" aria-labelledby="cabecera2" data-parent="#acordion1">
+					<div class="card-body">
+						<div class="form-group">
+							<label>Archivo: </label>
+							<input class="form-control-file" type="file" ng-file="fileData">
+							<small class="form-text text-danger" ng-show="ArchivoNoValido">Archivo no valido.</small>
+						</div>
+						<button class="btn btn-primary" ng-click="cargarFile()">Cargar</button>
+					</div>
+				</div>
+			</div>
+			
+			<div class="card">
+				<div class="card-header" id="cabecera3">
+					<h5 class="mb-0">
+						<button class="btn btn-link" data-toggle="collapse" data-target="#Opcion3" aria-expanded="true" aria-controls="Opcion3">
+							Cargar Datos desde API-REST
+						</button>
+					</h5>
+				</div>
+				<div id="Opcion3" class="collapse" aria-labelledby="cabecera3" data-parent="#acordion1">
+					<div class="card-body">
+						<div class="form-group">
+							<label >URI de la API:</label>
+							<input type="text" ng-model="ApiRest" class="form-control">
+							<small class="form-text text-muted">Asegurese que la Api devuelva un array de objetos.</small>
+						</div>
+						<button class="btn btn-primary" ng-click="cargarApi()">Cargar</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-header" id="cabecera4">
+					<h5 class="mb-0">
+						<button class="btn btn-link" data-toggle="collapse" data-target="#Opcion4" aria-expanded="true" aria-controls="Opcion4">
+							Eliminar Registro
+						</button>
+					</h5>
+				</div>
+				<div id="Opcion4" class="collapse" aria-labelledby="cabecera4" data-parent="#acordion1">
+					<div class="card-body" ng-init="del_rut='';del_certificado=0">
+						<div class="form-group">
+							<label>RUT:</label>
+							<input ng-change="format('del_rut')" type="text" class="form-control" ng-model="del_rut">
+						</div>
+						<div class="form-group">
+							<label>certificado:</label>
+							<select value="0" class="form-control" ng-model="del_certificado">
+								<option value="-1">Ninguno</option>
+								<option value="{{elem.id}}" ng-repeat="elem in opcionesEquipo">{{elem.titulo}}</option>
+							</select>
+						</div>
+						<div class="row justify-content-around">
+							<button class="col-3 btn btn-danger" ng-click="borrar()">Borrar</button>
+							<button class="col-3 btn btn-danger" ng-click="borrarTodo()">Borrar Todo</button>
+					</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-header" id="cabecera7">
+					<h5 class="mb-0">
+						<button class="btn btn-link" data-toggle="collapse" data-target="#Opcion7" aria-expanded="true" aria-controls="Opcion7">
+							Descargar Datos como Archivo
+						</button>
+					</h5>
+				</div>
+				<div id="Opcion7" class="collapse" aria-labelledby="cabecera7" data-parent="#acordion1">
+					<div class="card-body">
+						<div class="form-group">
+							<label >Elija el formato de descarga:</label>
+						</div>
+						<button class="btn btn-success" ng-click="getDATA('JSON')">JSON</button>
+						<button class="btn btn-success" ng-click="getDATA('XML')">XML</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	<br><h5>Configuracion</h5><br>
+	<form>
+		<div id="acordion2">
+			<div class="card" >
+				<div class="card-header" id="cabecera5">
+					<h5 class="mb-0">
+						<button class="btn btn-link" data-toggle="collapse" data-target="#Opcion5" aria-expanded="true" aria-controls="Opcion5">
+							Cambiar Clave
+						</button>
+					</h5>
+				</div>
+				<div id="Opcion5" class="collapse" aria-labelledby="cabecera5" data-parent="#acordion2">
+					<div class="card-body">
+						<div class="form-group">
+							<label>Contraseña Anterior</label>
+							<input class="form-control" type="password" ng-model="vieja_contrasena">
+						</div>
+						<div class="form-group">
+							<label>Contraseña Nueva</label>
+							<input class="form-control" type="password" ng-model="nueva_contrasena">
+						</div>
+						<button class="btn btn-primary" ng-click="cambiarClave()">Cambiar</button>
+					</div>
+				</div>
+			</div>
+			<div class="card" ng-show="nivel_usuario==3">
+				<div class="card-header" id="cabecera6">
+					<h5 class="mb-0">
+						<button class="btn btn-link" data-toggle="collapse" data-target="#Opcion6" aria-expanded="true" aria-controls="Opcion6">
+							Administrar Usuarios <span show="nuevos_usuarios.length!=0" class="badge badge-danger">{{nuevos_usuarios.length}}</span>
+						</button>
+					</h5>
+				</div>
+				<div id="Opcion6" class="collapse" aria-labelledby="cabecera6" data-parent="#acordion2">
+					<div class="card-body">
+						<ul>
+							<li ng-repeat="usuario in nuevos_usuarios">
+								<h5 style="display: inline-block;"><b>Usuario:</b> <i>{{usuario.usuario}} </i></h5>
+								<input class="form-control" min="0" max="2" style="width: 100px; display: inline-block;" type="number" value="{{usuario.nivel}}" ng-model="estado[usuario.usuario]"><br><br>
+								<a class="btn btn-success btn-sm" ng-click="aprobar(true,usuario.usuario)">Actualizar</a>
+								<a class="btn btn-danger btn-sm" ng-click="aprobar(false,usuario.usuario)">Eliminar</a><br><br>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-header" id="cabecera8">
+					<h5 class="mb-0">
+						<button class="btn btn-link" data-toggle="collapse" data-target="#Opcion8" aria-expanded="true" aria-controls="Opcion8">
+							Token de API
+						</button>
+					</h5>
+				</div>
+				<div id="Opcion8" class="collapse" aria-labelledby="cabecera8" data-parent="#acordion2">
+					<div class="card-body">
+						<label>Su Token es de nivel {{nivel_usuario}}</label><br>
+						<b>{{token_usuario}}</b><br>
+						<button class="btn btn-primary" ng-click="generarToken(true)">Generar nuevo Token</button>
+					</div>
+				</div>
+			</div>
+
+			
+		</div>
+	</form>
+<br>
+<center>
+	<button class="btn btn-danger btn-sm" ng-click="logout()">Logout</button>
+</center>
+
+<div class="modal fade" id="dialogo">
+	<div class="modal-dialog modal-lg modal-dialog-centered">
+		<div class="modal-content">
+			<!-- CABECERA DEL DIALOGO -->
+			<div class="modal-header">
+				<h4 class="modal-title">Verifique sus credenciales</h4>
+			</div>
+			<!-- CUERPO DEL DIALOGO -->
+			<div class="modal-body">
+				<div class="form-group">
+					<label>
+						Usuario: 
+					</label>
+					<input class="form-control" type="text" disabled ng-model="usuario"/>
+				</div>
+				<div class="form-group">
+					<label>
+						Contrasena: 
+					</label>
+					<input class="form-control" type="password" ng-model="contrasena"/>
+				</div>
+			</div>
+			<!-- PIE DEL DIALOGO -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="confirm()">Confirmar</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="logout()">No soy este usuario</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+

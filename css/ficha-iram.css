@@ -1,0 +1,57 @@
+.ficha-iram{
+	position: relative;
+	width: 70%;
+	height: 50%;
+	left: 15%;
+}
+
+
+.ficha-iram * {
+  font-size: 90%;
+  padding: 1px;
+  margin: 0px;
+}
+
+.ficha-iram .ficha-linea-1{
+	position: relative;
+	width: 100%;
+}
+.ficha-col-1 img, .ficha-col-3 img{
+	position: relative;
+	width: 95%;
+	top: -2em;
+	left: 2.5%;
+	align-content: center;
+}
+.ficha-col-1, .ficha-col-2, .ficha-col-3{
+	display:inline-block;
+}
+.ficha-col-1 *, .ficha-col-2 *, .ficha-col-3 *{
+	display:block;
+}
+.ficha-col-1, .ficha-col-3{
+	width:20%;
+}
+.ficha-col-2{
+	width: 55%;
+}
+.ficha-linea-1 .ficha-col-2{
+	font-weight: bold;
+}
+.ficha-col-2 span{
+	font-size: 150%;
+}
+.ficha-col-3{
+	width: 20%;
+}
+.ficha-iram .ficha-linea-2{
+	position: relative;
+	width: 100%;
+}
+.ficha-iram .ficha-footer{
+	font-size: 60%;	
+}
+.ficha-iram input{
+	width: 90%;
+	font-size: 70%;
+}

@@ -1,0 +1,113 @@
+
+<div class="row justify-content-center">
+    <!--span>Buscar Personas</span-->
+    <label class="switchBtn">
+        <input type="checkbox" ng-model="selectSearch">
+        <div class="slide round">
+            <span ng-show="!selectSearch">Personas</span>
+            <span ng-show="selectSearch">Empresas</span>
+        </div>
+    </label>
+    <!--div class="toggle" ng-class="{'toggle-active':selectSearch}" ng-click="selectSearch=!selectSearch">
+    	<div class="circle" ng-class="{'toggle-circle-active':selectSearch}"></div>
+    	<input type="checkbox" name="posLogo" ng-model="selectSearch"/>
+    </div>
+    <span>Buscar Empresas</span-->
+</div>
+<br><br>
+<div class="row justify-content-center">
+    <div class="fade" ng-show="!selectSearch">
+		<form ng-submit="search()" method="post" class="search-input form-control">
+			<input type="text" autofocus title="Solo ingrese numeros por favor" placeholder="Ingrese el numero de certificado de la persona..." autocomplete="off" ng-model="target" ng-change="formatREG('target')" onfocus="this.parentElement.style['box-shadow'] = '0px 0px 5px rgb(77,144,254)'" onblur="this.parentElement.style['box-shadow'] = '0px 0px 5px rgba(77,144,254,0)'" />
+			<span>
+			</span>
+			<img ng-click="search()" src="img/search.svg"/>
+		</form>
+		<center><small class="text-muted">Ejemplo: XX-0000-00</small></center>
+	</div>
+	<div class="fade" ng-show="selectSearch">
+		<form ng-submit="searchEquipos()" method="post" class="search-input form-control">
+			<input type="text" autofocus title="Solo ingrese numeros por favor" placeholder="Ingrese el numero de certificado de la empresa..." autocomplete="off" ng-model="target2" ng-change="formatEMP('target2')" onfocus="this.parentElement.style['box-shadow'] = '0px 0px 5px rgb(77,144,254)'" onblur="this.parentElement.style['box-shadow'] = '0px 0px 5px rgba(77,144,254,0)'" />
+			<span>
+			</span>
+			<img ng-click="searchEquipos()" src="img/search.svg"/>
+		</form>
+		<center><small class="text-muted">Ejemplo: XX-X-X-XX0000</small></center>
+	</div>
+	</div>
+	
+	
+	
+	<div class="row justify-content-center fondo" ng-show="data.result&&!searching&&!error">
+	
+			<i style="color:green">Su consulta para el numero <b>{{last}}</b> arrojo el siguiente resultado.</i><br>
+	</div>
+	<div class="row justify-content-center fondo" ng-show="data.result&&!searching&&!error">
+		<div class="dropdown">
+			<button class="btn btn-success dropdown-toggle" type="button" id="dropdown1" data-toggle="dropdown">Descargar Certificado</button>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" target="_blanck" href="certificados/{{data.nro_registro}}.pdf">{{data.nro_registro}}.pdf</a>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div class="row justify-content-center fondo" ng-show="data.result&&!searching&&!error" >
+				<div class="col-8 datos align-items-center">
+						<div class="ficha-iram" style="background: url('img/bg-ficha.png') no-repeat center center; background-size: cover">
+							<h2><span style="color:#ff6c2c; font-weight:bold;">>></span>Operador Equipos de Izaje</h2><br>
+							<div class="ficha-linea-1">
+								<div class="ficha-col-1">
+									<img ng-src="img/img_{{data.rut}}.png" />
+								</div>
+								<div class="ficha-col-2">
+									<label>APELLIDOS</label>
+									<span>{{data.apellido|uppercase}}</span>
+									<label>NOMBRES</label>
+									<span>{{data.nombre|uppercase}}</span>
+									<label>RUT</label>
+									<span>{{data.rut}}</span>
+								</div>
+								<div class="ficha-col-3 ">
+									<img src="img/ico_iram.png">
+								</div>
+							</div>
+							<div class="ficha-linea-2">
+								<div class="ficha-col-1">
+								<label>EVALUACION</label>
+								<label><b>{{data.fecha_evaluacion}}</b></label>
+								<label>FECHA EXPIRACION</label>
+								<label><b>{{data.fecha_expiracion}}</b></label>
+							</div>
+							<div class="ficha-col-2">
+								<label>Registro N°</label>
+								<label><b>{{data.nro_registro}}</b></label>
+								<label>Observaciones</label>
+								<label><b>{{data.observaciones}}</b></label>
+							</div>
+							<div class="ficha-col-3">
+								<label>Equipo de Izaje</label>
+								<label><b>{{data.equipo}}</b></label>
+							</div>
+						</div>
+						<div class="ficha-footer">
+							VÁLIDA SÓLO DENTRO DEL PLAZO DE VIGENCIA DE UN (1) AÑO Y EN DESEMPEÑO EXCLUSIVO PARA SCHLUMBERGER CHILE 
+						</div>
+					</div>
+		</div>
+		
+	</div>
+	<div class="row justify-content-center fondo" ng-show="!data.result&&searching&&!error">
+		<i class="text-muted">Buscando... Por favor espere...</i>
+	</div>
+	<div class="row justify-content-center fondo" ng-show="!data.result&&!searching&&!error">
+		<i style="color:red">Su consulta para el numero <b>{{last}}</b> no arrojo ningun resultado.</i>
+	</div>
+	<div  class="row justify-content-center" ng-show="!data.result&&!searching&&error">
+		<h3 style="color:red">No se pudo establecer conexion con el Servidor</h3>
+		<p>Recomendamos <a href="#" onclick="document.location.reload()">actulizar</a> la pagina y volver a intentar.</p>
+	</div>
+	<div class="row justify-content-center">
+	    <div class="col-4 text-center">
+	        <button class="btn btn-outline-danger" ng-click="logout()">Logout</button>
+	    </div>    
+	</div>
