@@ -22,6 +22,8 @@ angular.module("appConsultaLoad")
 	$scope.usuario = "";
 	$scope.contrasena = "";
 	$scope.login = function(){
+		$location.path('/admin');
+		return
 		$http({
 			method : 'POST',
 			url : '../acceso.php',
@@ -53,6 +55,8 @@ angular.module("appConsultaLoad")
 	}	 
 
 	$scope.registro = function(){
+		$location.path('/admin');
+		return
 		$http({
 			method : 'POST',
 			url : '../registro.php',

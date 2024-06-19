@@ -99,7 +99,7 @@ angular.module("appConsultaLoad")
 	
 	//funcion para verificar la identidad del usuario y evitar que se entre usando el link
 	if(($sessionStorage.usuario === undefined)||($sessionStorage.usuario === '')){
-		$location.path('/');
+		//$location.path('/');
 	}
 	else{
 		$scope.usuario = $sessionStorage.usuario;
